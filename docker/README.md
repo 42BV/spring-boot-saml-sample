@@ -60,7 +60,7 @@ with this SAML setup you can create a keystore with Key Pair with a self-signed 
 follows:
 
 ```bash
-keytool -genkeypair -alias 42 -dname CN=42 -keyalg rsa -keysize 4096 -keypass <passwd> -validity 9999 -storepass <passwd> -keystore 42-saml.jks
+keytool -genkeypair -alias apollo -dname CN=42 -keyalg rsa -keysize 4096 -keypass nalle123 -validity 9999 -storepass nalle123 -keystore 42-saml.jks
 ```
 
 # Truststore
@@ -68,5 +68,5 @@ keytool -genkeypair -alias 42 -dname CN=42 -keyalg rsa -keysize 4096 -keypass <p
 To communicate over SSL the CA Certificate of the IdP must be imported into the Java truststore of the SP.
 
 ```bash
-keytool -import -alias 42.nl -file public.cert -keystore java_home/lib/security/cacerts
+keytool -import -alias apollo -file server.cert -keystore 42-saml.jks
 ```
