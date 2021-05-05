@@ -1,0 +1,12 @@
+version: '2'
+services:
+  saml:
+    image: 'kristophjunge/test-saml-idp'
+    container_name: 'testsamlidp'
+    ports:
+      - 8090:8080
+      - 8443:8443
+    env_file:
+      - env
+    volumes:
+      - ./users.php:/var/www/simplesamlphp/config/authsources.php
