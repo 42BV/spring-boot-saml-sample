@@ -10,7 +10,7 @@ saml:
     email: email
     role: samlRole # when excluded throws an error: Could not map property.
   role_required: false
-  metadata_url: http://localhost:8090/simplesaml/saml2/idp/metadata.php
+  idp_metadata_url: http://localhost:8090/simplesaml/saml2/idp/metadata.php
   idp_url: http://localhost:8090/simplesaml/saml2/idp/SSOService.php
   idp_certificate: '
     -----BEGIN CERTIFICATE-----
@@ -35,14 +35,7 @@ saml:
     aQ==
     -----END CERTIFICATE-----
   '
-  keystore:
-    file_name: classpath:simple-saml.jks
-    key: apollo
-    password: nalle123
-    user: apollo
   sp_id: 42-saml
   sp_base_url: http://localhost:8080
+  sp_logout_url: http://localhost:8080
   success_url: http://localhost:8080
-  logout_url: http://localhost:8080
-  expired_url: http://localhost:8080
-  forbidden_url: http://localhost:8080
