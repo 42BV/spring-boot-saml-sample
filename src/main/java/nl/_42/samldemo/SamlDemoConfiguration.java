@@ -12,9 +12,14 @@ public class SamlDemoConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-            .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
-            .antMatchers(HttpMethod.GET, "/").permitAll();
+        http
+            .authorizeRequests()
+                .antMatchers("/saml/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/").permitAll()
+                .antMatchers(HttpMethod.OPTIONS,"/**").permitAll()
+            .and()
+            .csrf()
+                .ignoringAntMatchers("/saml/**");
     }
 
 }

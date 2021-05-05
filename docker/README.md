@@ -49,7 +49,7 @@ The server is now available via: `http://localhost:8090/simplesaml`
 
 # Use
 
-To login with the SAML users, you go to `localhost:8000/api/saml/login`. This should redirect you to
+To login with the SAML users, you go to `localhost:8080/api/saml/login`. This should redirect you to
 the SAML login page. Login with the credentials defined in `users.php`. If successfully logged in you
 will be redirected to the `success_url`.
 

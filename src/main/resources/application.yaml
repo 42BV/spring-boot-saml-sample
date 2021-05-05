@@ -18,8 +18,8 @@ saml:
     password: nalle123
     user: apollo
   sp_id: 42-saml
-  sp_base_url: http://localhost:8000
-  success_url: http://localhost:8000
-  logout_url: http://localhost:8000
-  expired_url: http://localhost:8000
-  forbidden_url: http://localhost:8000
+  sp_base_url: http://localhost:8080
+  success_url: http://localhost:8080
+  logout_url: http://localhost:8080
+  expired_url: http://localhost:8080
+  forbidden_url: http://localhost:8080
