@@ -13,9 +13,9 @@ saml:
     key: apollo
     password: nalle123
     user: apollo
+  idp_logout_url: http://localhost:8090/simplesaml/saml2/idp/SingleLogoutService.php
   idp_metadata_url: http://localhost:8090/simplesaml/saml2/idp/metadata.php
   idp_url: http://localhost:8090/simplesaml/saml2/idp/SSOService.php
   sp_id: 42-saml
   sp_base_url: http://localhost:8080
-  sp_logout_url: http://localhost:8080
   success_url: http://localhost:8080
