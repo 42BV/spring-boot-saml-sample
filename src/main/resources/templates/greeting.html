@@ -7,7 +7,15 @@
     <body>
         <p th:text="'Hello, ' + ${name} + '!'" />
 
-        <h2>SAML</h2>
+        <table>
+            <tbody>
+                <tr th:each="attribute : ${attributes}">
+                    <td th:text="${attribute.key}"></td>
+                    <td th:text="${attribute.value}"></td>
+                </tr>
+            </tbody>
+        </table>
+
         <p>
             <a href="/saml/login">Login</a>
             <a href="/saml/logout">Logout</a>
