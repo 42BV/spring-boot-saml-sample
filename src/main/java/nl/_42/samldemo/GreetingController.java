@@ -1,7 +1,7 @@
 package nl._42.samldemo;
 
-import nl._42.boot.saml.user.SAMLAuthentication;
-import nl._42.boot.saml.user.SAMLResponse;
+import nl._42.boot.onelogin.saml.Saml2Response;
+import nl._42.boot.onelogin.saml.user.Saml2Authentication;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,8 +22,8 @@ public class GreetingController {
         model.addAttribute("name", authentication.getName());
 
         Map<String, String> attributes = new HashMap<>();
-        if (authentication instanceof SAMLAuthentication) {
-            SAMLResponse response = ((SAMLAuthentication) authentication).getResponse();
+        if (authentication instanceof Saml2Authentication) {
+            Saml2Response response = ((Saml2Authentication) authentication).getResponse();
 
             Collection<String> names = response.getAttributes();
             names.forEach(name -> attributes.put(name, response.getValues(name).stream().collect(Collectors.joining(", "))));

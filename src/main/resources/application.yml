@@ -7,25 +7,71 @@ spring:
     user:
       password: 'welkom42'
 
-saml:
-  enabled: true
-  attributes:
-    user: username
-    email: email
-  keystore:
-    file_name: classpath:simple-saml.jks
-    key: apollo
-    password: nalle123
-    user: apollo
-  idp_logout_url: http://localhost:8090/simplesaml/saml2/idp/SingleLogoutService.php
-  idp_metadata_url: http://localhost:8090/simplesaml/saml2/idp/metadata.php
-  idp_url: http://localhost:8090/simplesaml/saml2/idp/SSOService.php
-  properties:
-    # debug: true
-    contacts:
-      technical:
-        given_name: 'Support 42'
-        email_address: 'support@42.nl'
-  sp_id: 42-saml
-  sp_base_url: http://localhost:8080
-  success_url: http://localhost:8080
+onelogin:
+  saml:
+    enabled: true
+    base_url: 'http://localhost:8080'
+    success_url: 'http://localhost:8080'
+    properties:
+      contacts:
+        technical:
+          given_name: 'Support 42'
+          email_address: 'support@42.nl'
+    registrations:
+      simple-saml:
+        service_provider_id: 42-saml
+        identity_provider_id: http://localhost:8090/simplesaml/saml2/idp/metadata.php
+        metadata_url: http://localhost:8090/simplesaml/saml2/idp/metadata.php
+        sign_on_url: http://localhost:8090/simplesaml/saml2/idp/SSOService.php
+        logout_url: http://localhost:8090/simplesaml/saml2/idp/SingleLogoutService.php
+        certificate: "
+          -----BEGIN CERTIFICATE-----
+          MIIDXTCCAkWgAwIBAgIJALmVVuDWu4NYMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
+          BAYTAkFVMRMwEQYDVQQIDApTb21lLVN0YXRlMSEwHwYDVQQKDBhJbnRlcm5ldCBX
+          aWRnaXRzIFB0eSBMdGQwHhcNMTYxMjMxMTQzNDQ3WhcNNDgwNjI1MTQzNDQ3WjBF
+          MQswCQYDVQQGEwJBVTETMBEGA1UECAwKU29tZS1TdGF0ZTEhMB8GA1UECgwYSW50
+          ZXJuZXQgV2lkZ2l0cyBQdHkgTHRkMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+          CgKCAQEAzUCFozgNb1h1M0jzNRSCjhOBnR+uVbVpaWfXYIR+AhWDdEe5ryY+Cgav
+          Og8bfLybyzFdehlYdDRgkedEB/GjG8aJw06l0qF4jDOAw0kEygWCu2mcH7XOxRt+
+          YAH3TVHa/Hu1W3WjzkobqqqLQ8gkKWWM27fOgAZ6GieaJBN6VBSMMcPey3HWLBmc
+          +TYJmv1dbaO2jHhKh8pfKw0W12VM8P1PIO8gv4Phu/uuJYieBWKixBEyy0lHjyix
+          YFCR12xdh4CA47q958ZRGnnDUGFVE1QhgRacJCOZ9bd5t9mr8KLaVBYTCJo5ERE8
+          jymab5dPqe5qKfJsCZiqWglbjUo9twIDAQABo1AwTjAdBgNVHQ4EFgQUxpuwcs/C
+          YQOyui+r1G+3KxBNhxkwHwYDVR0jBBgwFoAUxpuwcs/CYQOyui+r1G+3KxBNhxkw
+          DAYDVR0TBAUwAwEB/zANBgkqhkiG9w0BAQsFAAOCAQEAAiWUKs/2x/viNCKi3Y6b
+          lEuCtAGhzOOZ9EjrvJ8+COH3Rag3tVBWrcBZ3/uhhPq5gy9lqw4OkvEws99/5jFs
+          X1FJ6MKBgqfuy7yh5s1YfM0ANHYczMmYpZeAcQf2CGAaVfwTTfSlzNLsF2lW/ly7
+          yapFzlYSJLGoVE+OHEu8g5SlNACUEfkXw+5Eghh+KzlIN7R6Q7r2ixWNFBC/jWf7
+          NKUfJyX8qIG5md1YUeT6GBW9Bm2/1/RiO24JTaYlfLdKK9TYb8sG5B+OLab2DImG
+          99CJ25RkAcSobWNF5zD0O6lgOo3cEdB/ksCq3hmtlC/DlLZ/D8CJ+7VuZnS1rR2n
+          aQ==
+          -----END CERTIFICATE-----
+        "
+        validate: false
+        properties:
+          strict: false
+      google:
+        service_provider_id: saml-sample
+        identity_provider_id: https://accounts.google.com/o/saml2?idpid=C03dtv2yy
+        metadata_url: https://accounts.google.com/o/saml2?idpid=C03dtv2yy
+        sign_on_url: https://accounts.google.com/o/saml2/idp?idpid=C03dtv2yy
+        certificate: "
+          -----BEGIN CERTIFICATE-----
+          MIIDdDCCAlygAwIBAgIGAXXliDW6MA0GCSqGSIb3DQEBCwUAMHsxFDASBgNVBAoTC0dvb2dsZSBJ
+          bmMuMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MQ8wDQYDVQQDEwZHb29nbGUxGDAWBgNVBAsTD0dv
+          b2dsZSBGb3IgV29yazELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWEwHhcNMjAxMTIw
+          MTIwMTQ5WhcNMjUxMTE5MTIwMTQ5WjB7MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEWMBQGA1UEBxMN
+          TW91bnRhaW4gVmlldzEPMA0GA1UEAxMGR29vZ2xlMRgwFgYDVQQLEw9Hb29nbGUgRm9yIFdvcmsx
+          CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
+          MIIBCgKCAQEAwsabbN8wy2XZvbmruSSb7YX6Aj3jtntzIedxcbbGILakC32aotq+PocGvTcc5gMO
+          tGWNnvooIz43FkfhKpx1QJgeR6LeFAkB7+eDuKSYcXF7cx41TNxe5ML8HykI0XCIfIr7cTSB5Cp+
+          HmYxELX7DV+/1u65k8iQ/1ty59fwJjqtslOZ4kIwTO7OyUVWQHxOjekPfShSNVsiwUtSjHocOWYD
+          DJqnhAUSz5scr4VQqCooC0y3EdLzfHMwC5ZaCuRthfFgHkeaog2ijw3lwuHU/9E/dFnno3Y8CdcX
+          dkbhUzZkmiORVd3svKai5oL4P1qLeibNVybjsuSEOynNNIxXnwIDAQABMA0GCSqGSIb3DQEBCwUA
+          A4IBAQAi4bPCXgk06EjcCaQx1yDleQVsrEqC41mSrblsfhHzkrYiIdCTQkElfwgNnh6Ytt60l0Sv
+          gE111Vyymjym5GHQQHDIH4uBnvgMMXC1B73bfO6snAVu3YhFXIDeZpjjMNp3PYTAp2etGKATm5mX
+          +Pyn+1gH+0epnNfrjLyQ+34J5vHbYxdqSSl2hNuzvROmPhz47v8VzTO+/ugwmH6nNlvIdd1Rjqu/
+          vKc4PTAPQCKJeXI3htviRGYcEYYIiGHU9JYQYOnZ/EgkPmFz11zPrXPtU1jUG/i40KEXvQ6GCe8/
+          QZcJR2RFWveI15eyaln1I41o+eljzm7GihCpQpbUug+k
+          -----END CERTIFICATE-----
+        "
