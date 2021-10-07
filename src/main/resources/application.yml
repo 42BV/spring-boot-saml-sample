@@ -12,11 +12,6 @@ onelogin:
     enabled: true
     base_url: 'http://localhost:8080'
     success_url: 'http://localhost:8080'
-    properties:
-      contacts:
-        technical:
-          given_name: 'Support 42'
-          email_address: 'support@42.nl'
     registrations:
       simple-saml:
         service_provider_id: 42-saml
