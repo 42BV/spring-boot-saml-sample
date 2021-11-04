@@ -14,10 +14,11 @@ onelogin:
     success_url: 'http://localhost:8080'
     registrations:
       simple-saml:
+        debug: true
         service_provider_id: 42-saml
         identity_provider_id: http://localhost:8090/simplesaml/saml2/idp/metadata.php
         sign_on_url: http://localhost:8090/simplesaml/saml2/idp/SSOService.php
-        logout_url: http://localhost:8090/simplesaml/saml2/idp/SingleLogoutService.php
+        logout_url: http://localhost:8080
         attributes:
           role: 'samlRole'
         roles:
