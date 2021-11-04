@@ -3,6 +3,7 @@ package nl._42.samldemo;
 import nl._42.boot.onelogin.saml.Saml2Response;
 import nl._42.boot.onelogin.saml.user.Saml2Authentication;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,7 @@ public class GreetingController {
     public String greeting(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         model.addAttribute("name", authentication.getName());
+        model.addAttribute("authorities", authentication.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.joining(", ")));
 
         Map<String, String> attributes = new HashMap<>();
         if (authentication instanceof Saml2Authentication) {

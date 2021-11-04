@@ -16,9 +16,13 @@ onelogin:
       simple-saml:
         service_provider_id: 42-saml
         identity_provider_id: http://localhost:8090/simplesaml/saml2/idp/metadata.php
-        metadata_url: http://localhost:8090/simplesaml/saml2/idp/metadata.php
         sign_on_url: http://localhost:8090/simplesaml/saml2/idp/SSOService.php
         logout_url: http://localhost:8090/simplesaml/saml2/idp/SingleLogoutService.php
+        attributes:
+          role: 'samlRole'
+        roles:
+          group1: 'ROLE_USER'
+          group2: 'ROLE_ADMIN'
         certificate: "
           -----BEGIN CERTIFICATE-----
           MIIDXTCCAkWgAwIBAgIJALmVVuDWu4NYMA0GCSqGSIb3DQEBCwUAMEUxCzAJBgNV
@@ -40,33 +44,5 @@ onelogin:
           NKUfJyX8qIG5md1YUeT6GBW9Bm2/1/RiO24JTaYlfLdKK9TYb8sG5B+OLab2DImG
           99CJ25RkAcSobWNF5zD0O6lgOo3cEdB/ksCq3hmtlC/DlLZ/D8CJ+7VuZnS1rR2n
           aQ==
-          -----END CERTIFICATE-----
-        "
-        validate: false
-        properties:
-          strict: false
-      google:
-        service_provider_id: saml-sample
-        identity_provider_id: https://accounts.google.com/o/saml2?idpid=C03dtv2yy
-        metadata_url: https://accounts.google.com/o/saml2?idpid=C03dtv2yy
-        sign_on_url: https://accounts.google.com/o/saml2/idp?idpid=C03dtv2yy
-        certificate: "
-          -----BEGIN CERTIFICATE-----
-          MIIDdDCCAlygAwIBAgIGAXXliDW6MA0GCSqGSIb3DQEBCwUAMHsxFDASBgNVBAoTC0dvb2dsZSBJ
-          bmMuMRYwFAYDVQQHEw1Nb3VudGFpbiBWaWV3MQ8wDQYDVQQDEwZHb29nbGUxGDAWBgNVBAsTD0dv
-          b2dsZSBGb3IgV29yazELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWEwHhcNMjAxMTIw
-          MTIwMTQ5WhcNMjUxMTE5MTIwMTQ5WjB7MRQwEgYDVQQKEwtHb29nbGUgSW5jLjEWMBQGA1UEBxMN
-          TW91bnRhaW4gVmlldzEPMA0GA1UEAxMGR29vZ2xlMRgwFgYDVQQLEw9Hb29nbGUgRm9yIFdvcmsx
-          CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A
-          MIIBCgKCAQEAwsabbN8wy2XZvbmruSSb7YX6Aj3jtntzIedxcbbGILakC32aotq+PocGvTcc5gMO
-          tGWNnvooIz43FkfhKpx1QJgeR6LeFAkB7+eDuKSYcXF7cx41TNxe5ML8HykI0XCIfIr7cTSB5Cp+
-          HmYxELX7DV+/1u65k8iQ/1ty59fwJjqtslOZ4kIwTO7OyUVWQHxOjekPfShSNVsiwUtSjHocOWYD
-          DJqnhAUSz5scr4VQqCooC0y3EdLzfHMwC5ZaCuRthfFgHkeaog2ijw3lwuHU/9E/dFnno3Y8CdcX
-          dkbhUzZkmiORVd3svKai5oL4P1qLeibNVybjsuSEOynNNIxXnwIDAQABMA0GCSqGSIb3DQEBCwUA
-          A4IBAQAi4bPCXgk06EjcCaQx1yDleQVsrEqC41mSrblsfhHzkrYiIdCTQkElfwgNnh6Ytt60l0Sv
-          gE111Vyymjym5GHQQHDIH4uBnvgMMXC1B73bfO6snAVu3YhFXIDeZpjjMNp3PYTAp2etGKATm5mX
-          +Pyn+1gH+0epnNfrjLyQ+34J5vHbYxdqSSl2hNuzvROmPhz47v8VzTO+/ugwmH6nNlvIdd1Rjqu/
-          vKc4PTAPQCKJeXI3htviRGYcEYYIiGHU9JYQYOnZ/EgkPmFz11zPrXPtU1jUG/i40KEXvQ6GCe8/
-          QZcJR2RFWveI15eyaln1I41o+eljzm7GihCpQpbUug+k
           -----END CERTIFICATE-----
         "

@@ -6,6 +6,7 @@
     </head>
     <body>
         <p th:text="'Hello, ' + ${name} + '!'" />
+        <p th:text="'Authorities: ' + ${authorities}" />
 
         <table>
             <tbody>
@@ -19,6 +20,7 @@
         <p>
             <a href="/saml2/login/simple-saml">Login</a>
             <a href="/saml2/logout/simple-saml">Logout</a>
+            <a href="/saml2/metadata/simple-saml">Metadata</a>
         </p>
 
         <p>
